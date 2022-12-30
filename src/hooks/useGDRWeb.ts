@@ -17,14 +17,8 @@ export const useGDRWeb = (canvasRef: RefObject<HTMLCanvasElement>, levelStr: str
             if (rendererRef.current && levelRef.current) 
                 rendererRef.current.render(levelRef.current);
         } catch (e) {
-            console.error(e);
+            console.log("bruh");
         }
-    };
-
-    // update cycle, stops if not dragging
-    const update = () => {
-        render();
-        if (isDragging) window.requestAnimationFrame(update);
     };
 
     const setCamera = (s: { x?: number, y?: number, zoom?: number }) => {
@@ -67,9 +61,6 @@ export const useGDRWeb = (canvasRef: RefObject<HTMLCanvasElement>, levelStr: str
     }, [levelStr]);
 
     // begin the update cycle if dragging
-    useEffect(() => {
-        if (isDragging) window.requestAnimationFrame(update);
-    }, [isDragging]);
 
     return {
         isDragging, setIsDragging,
