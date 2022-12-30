@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, RefObject } from "react";
 
+import { useResize } from "./useResize";
 import { WebGLContext, GDRWebRenderer, GDLevel } from "../GDRWeb/src/main";
 import spritesheet from "../GDRWeb/assets/spritesheet.png";
 
@@ -59,6 +60,13 @@ export const useGDRWeb = (canvasRef: RefObject<HTMLCanvasElement>, levelStr: str
         if (!levelStr) levelRef.current = null;
         render();
     }, [levelStr]);
+
+    useResize(canvasRef, () => {
+        if (!canvasRef.current || !rendererRef.current) return;
+        const context = new WebGLContext(canvasRef.current);
+        rendererRef.current.ctx = context;
+        render();
+    });
 
     // begin the update cycle if dragging
 

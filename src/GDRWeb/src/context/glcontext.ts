@@ -352,7 +352,8 @@ export class WebGLContext extends RenderContext {
 
     render(c: ObjectCollection) {
         let gl = this.gl;
-
+        gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+        
         this.program.use();
         c.buffer.array.use();
 
