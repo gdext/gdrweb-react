@@ -11,7 +11,6 @@ const App = () => {
 
     useResize(canvasWrapperRef, ({ width, height }) => {
         setCanvasSize({ width, height });
-        console.log(width, height);
     });
 
     return <div>
@@ -25,7 +24,6 @@ const App = () => {
                         mouseButtons: 'middle'
                     }
                 }}
-                
             />
         </div>
 
@@ -39,7 +37,6 @@ const App = () => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     if (e.target?.result) {
-                        console.log(e.target.result.toString());
                         setLevelString(e.target.result.toString());
                     }
                 };
