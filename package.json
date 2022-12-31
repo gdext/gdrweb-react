@@ -1,21 +1,25 @@
 {
   "name": "gdrweb-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React wrapper around @iliasHDZ's GDRWeb rendering engine",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc",
-    "prepare" : "npm run build",
+    "build": "tsc && npm run copy-files",
+    "copy-files": "copyfiles -u 1 src/**/*.png lib/",
+    "prepare": "npm run build",
     "preview": "vite preview"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.0.0",
+    "copyfiles": "^2.4.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.3"
   },
