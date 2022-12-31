@@ -122,6 +122,8 @@ const GDRWebCanvas = ({ levelString, width, height, config: providedConfig }: GD
         wheelPanCamera(e, modifiers);
     }
 
+    const pixelRatio = window.devicePixelRatio || 1;
+
 
     return (
         <div
@@ -132,7 +134,10 @@ const GDRWebCanvas = ({ levelString, width, height, config: providedConfig }: GD
             onContextMenu={(e) => e.preventDefault()}
             onWheel={processScroll}
         >
-            <canvas id="canvas" width={width} height={height} ref={canvasRef} />
+            <canvas id="canvas" ref={canvasRef}
+                width={width * pixelRatio} height={height * pixelRatio}  
+                style={{ width: width, height: height }}
+            />
         </div>
     );
 }
