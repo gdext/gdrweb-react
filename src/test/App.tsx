@@ -20,6 +20,12 @@ const App = () => {
                 levelString={levelString} 
                 width={canvasSize.width || 800} 
                 height={canvasSize.height || 600} 
+                config={{
+                    pan: {
+                        mouseButtons: 'middle'
+                    }
+                }}
+                
             />
         </div>
 
