@@ -1,4 +1,9 @@
 {
+  "name": "gdrweb-react",
+  "version": "0.0.1",
+  "description": "A React wrapper around @iliasHDZ's GDRWeb rendering engine",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,5 +19,25 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdext/gdrweb-react.git"
+  },
+  "keywords": [
+    "GD",
+    "Geometry Dash",
+    "RobTop",
+    "render",
+    "webgl",
+    "gdrenderw",
+    "gdrweb",
+    "react"
+  ],
+  "author": "Ucrash",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gdext/gdrweb-react/issues"
+  },
+  "homepage": "https://github.com/gdext/gdrweb-react#readme"
 }
