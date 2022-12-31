@@ -17,8 +17,8 @@ export class GDObjectData {
     public baseCol: number;
     public detailCol: number;
 
-    public baseSprite: SpriteCrop   = null;
-    public detailSprite: SpriteCrop = null;
+    public baseSprite:   SpriteCrop | null = null;
+    public detailSprite: SpriteCrop | null = null;
 
     public spriteNoColor: boolean;
 
@@ -76,8 +76,8 @@ export class GDObjectData {
         return obj;
     }
 
-    static fromObjectDataList(list: any): {} {
-        let ret = {};
+    static fromObjectDataList(list: any): any {
+        let ret: any = {};
 
         for (let [k, v] of Object.entries(list))
             ret[k] = this.fromObjectData(v);

@@ -8,7 +8,7 @@ export class Texture {
 
     public loaded: boolean = false;
 
-    public onload: Function = null;
+    public onload: Function | null = null;
 
     ctx: RenderContext;
 

@@ -19,7 +19,7 @@ export class GDRWebRenderer {
 
     static objectData = GDObjectData.fromObjectDataList(objectDataList);
 
-    handlers: {} = {};
+    handlers: any = {};
 
     constructor(ctx: RenderContext, sheetpath: string) {
         this.ctx = ctx;
@@ -36,7 +36,7 @@ export class GDRWebRenderer {
         this.camera = new Camera(0, 0, 1);
     }
 
-    emit(event: string, ...args) {
+    emit(event: string, ...args: any) {
         if (this.handlers[event])
             for (let h of this.handlers[event])
                 h(...args);

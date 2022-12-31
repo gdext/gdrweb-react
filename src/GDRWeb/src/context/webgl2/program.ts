@@ -7,8 +7,8 @@ export class ShaderProgram {
     shaders: WebGLShader[] = [];
     program: WebGLProgram;
 
-    attribs  = {};
-    uniforms = {};
+    attribs:  any = {};
+    uniforms: any = {};
 
     constructor(gl: WebGL2RenderingContext) {
         this.gl = gl;
@@ -16,17 +16,17 @@ export class ShaderProgram {
 
     loadShader(type: number, source: string) {
         let gl = this.gl;
-        let s = gl.createShader(type);
+        let s = gl.createShader(type)!;
 
-        gl.shaderSource(s, source);
-        gl.compileShader(s);
+        gl.shaderSource(s!, source);
+        gl.compileShader(s!);
 
         if (gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
             this.shaders.push(s);
             return;
         }
 
-        let e = new Error(gl.getShaderInfoLog(s));
+        let e = new Error(gl.getShaderInfoLog(s!)!);
         gl.deleteShader(s);
 
         throw e;
@@ -35,7 +35,7 @@ export class ShaderProgram {
     link() {
         let gl = this.gl;
 
-        let prog = gl.createProgram();
+        let prog = gl.createProgram()!;
 
         for (let s of this.shaders)
             gl.attachShader(prog, s);
@@ -47,7 +47,7 @@ export class ShaderProgram {
             return;
         }
 
-        let e = new Error(gl.getProgramInfoLog(prog));
+        let e = new Error(gl.getProgramInfoLog(prog)!);
         gl.deleteProgram(prog);
 
         throw e;

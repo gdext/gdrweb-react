@@ -24,7 +24,7 @@ export class SpeedPortal extends GDObject {
             case 1334: s = PortalSpeed.FOUR; break;
         }
 
-        this.speed = s;
+        this.speed = s!;
     }
 
     static getSpeed(s: PortalSpeed): number {

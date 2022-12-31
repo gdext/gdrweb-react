@@ -19,7 +19,7 @@ export class ColorTrigger extends GDObject {
 
     color: number;
 
-    applyData(data: {}) {
+    applyData(data: any) {
         super.applyData(data);
 
         this.r = GDObject.parse(data[7], 'number', 255);

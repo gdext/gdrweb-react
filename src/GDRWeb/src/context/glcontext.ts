@@ -156,7 +156,7 @@ export class WebGLContext extends RenderContext {
         this.gl = canvas.getContext('webgl2', {
             premultipliedAlpha: true,
             alpha: false
-        });
+        })!;
 
         this.init();
     }

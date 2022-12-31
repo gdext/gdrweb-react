@@ -28,7 +28,7 @@ export class GDObject {
         }
     }
 
-    static getZLayerValue(z: number): ZLayer {
+    static getZLayerValue(z: number): ZLayer | null {
         switch (z) {
             case -3: ZLayer.B4;
             case -1: ZLayer.B3;
@@ -41,7 +41,7 @@ export class GDObject {
         }
     }
 
-    applyData(data: {}) {
+    applyData(data: any) {
         this.id       = GDObject.parse(data[1], 'number',  1);
         this.x        = GDObject.parse(data[2], 'number',  0);
         this.y        = GDObject.parse(data[3], 'number',  0);

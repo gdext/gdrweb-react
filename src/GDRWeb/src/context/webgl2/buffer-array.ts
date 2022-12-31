@@ -10,7 +10,7 @@ export class BufferArray {
     constructor(gl: WebGL2RenderingContext) {
         this.gl = gl;
 
-        this.vao = gl.createVertexArray();
+        this.vao = gl.createVertexArray()!;
     }
 
     add(location: number, buffer: BufferObject, size: number, offset: number, stride: number, divisor: number = 0) {

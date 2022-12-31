@@ -16,7 +16,9 @@ export class GDLevel {
     private data: GDObject[] = [];
 
     private speedportals:  number[];
-    private colortriggers: {};
+    private colortriggers: {
+        [key: string]: any
+    };
 
     renderer: GDRWebRenderer;
     level_col: ObjectCollection;
@@ -26,7 +28,9 @@ export class GDLevel {
 
     valid_channels: number[];
 
-    start_colors: {};
+    start_colors: {
+        [key: string]: any
+    };
 
     constructor(renderer: GDRWebRenderer) {
         this.renderer = renderer;
@@ -34,7 +38,7 @@ export class GDLevel {
 
     static parseStartColor(level: GDLevel, str: string) {
         let psplit = str.split('_');
-        let props  = {};
+        let props: any = {};
 
         for (let p = 0; p < psplit.length; p += 2)
             props[+psplit[p]] = psplit[p + 1];
@@ -61,7 +65,7 @@ export class GDLevel {
 
     static parseLevelProps(level: GDLevel, str: string) {
         let psplit = str.split(',');
-        let props  = {};
+        let props: any = {};
 
         for (let p = 0; p < psplit.length; p += 2)
             props[psplit[p]] = psplit[p + 1];
@@ -79,7 +83,7 @@ export class GDLevel {
         }
     }
 
-    static getObject(data: {}): GDObject {
+    static getObject(data: any): GDObject {
         let id = data[1] || 1;
 
         let o: GDObject;
@@ -103,7 +107,7 @@ export class GDLevel {
 
         for (let i = 1; i < split.length; i++) {
             let psplit = split[i].split(',');
-            let props  = {};
+            let props: any = {};
 
             for (let p = 0; p < psplit.length; p += 2)
                 props[+psplit[p]] = psplit[p + 1];
@@ -200,7 +204,7 @@ export class GDLevel {
     
     static mixGDColors(col1: GDColor, col2: GDColor, mix: number): GDColor {
         if (col1 instanceof BaseColor && col2 instanceof BaseColor)
-            return BaseColor.fromColor(col1.evaluate(null).blend(col2.evaluate(null), mix), mix <= 0 ? col1.blending : col2.blending);
+            return BaseColor.fromColor(col1.evaluate().blend(col2.evaluate(), mix), mix <= 0 ? col1.blending : col2.blending);
 
         if (mix == 0)
             return col1;
@@ -224,7 +228,7 @@ export class GDLevel {
         else if (ch == 1011)
             return new BaseColor(1, 1, 1, 1, false);
 
-        let lct: ColorTrigger = null, col = this.getStartColor(ch);
+        let lct: ColorTrigger | null = null, col = this.getStartColor(ch);
 
         for (let i of this.colortriggers[ch]) {
             let ct = this.data[i] as ColorTrigger;
@@ -251,7 +255,7 @@ export class GDLevel {
     }
 
     addTexture(obj: GDObject, s: SpriteCrop, color: number) {
-        this.level_col.add(this.getModelMatrix(obj), color, s);
+        this.level_col.add(this.getModelMatrix(obj)!, color, s);
     }
 
     loadSpeedPortals() {
